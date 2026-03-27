@@ -1,3 +1,14 @@
+let mouse = {
+    x: 0,
+    y: 0
+};
+
+canvas.addEventListener("mousemove", (e) => {
+    const rect = canvas.getBoundingClientRect();
+    mouse.x = e.clientX - rect.left;
+    mouse.y = e.clientY - rect.top;
+});
+
 const canvas = document.getElementById("canvas");
 const ctx = canvas.getContext("2d");
  
@@ -36,27 +47,42 @@ function animate() {
 }
  
 
-// plantas
+// plantas - interação com o mouse
 function drawPlants() {
     ctx.save();
- 
+
     ctx.strokeStyle = "green";
-    ctx.lineWidth = 6;
- 
+    ctx.lineWidth = 4;
+
     for (let i = 50; i < canvas.width; i += 100) {
+
+        let baseX = i;
+        let baseY = canvas.height;
+
+        let dx = mouse.x - baseX;
+        let dy = mouse.y - (canvas.height - 150);
+        let distance = Math.sqrt(dx * dx + dy * dy);
+
+        let influence = 0;
+        if (distance < 150) {
+            influence = (150 - distance) / 150;
+        }
+
+        let bend = dx * 0.3 * influence;
+
         ctx.beginPath();
-        ctx.moveTo(i, canvas.height);
- 
+        ctx.moveTo(baseX, baseY);
+
         ctx.quadraticCurveTo(
-            i + 20,
+            baseX + 20 + bend,
             canvas.height - 100,
-            i,
+            baseX + bend,
             canvas.height - 200
         );
- 
+
         ctx.stroke();
     }
- 
+
     ctx.restore();
 }
  
