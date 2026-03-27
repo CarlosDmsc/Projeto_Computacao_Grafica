@@ -31,25 +31,25 @@ for (let i = 0; i < 20; i++) {
 }
  
 // loop
-function animate() {
+function animar() {
     
     ctx.setTransform(1, 0, 0, 1, 0, 0);
  
     ctx.clearRect(0, 0, canvas.width, canvas.height);
  
-    drawPlants();  
-    drawBubbles();  
+    desenharPlantas();  
+    desenharBolhas();  
  
-    drawFish();
-    drawPufferFish();
-    drawRotatingFish();
+    desenharPeixe();
+    desenharBaiacu();
+    desenharLataGirando();
  
-    requestAnimationFrame(animate);
+    requestAnimationFrame(animar);
 }
  
 
 // plantas - interação com o mouse
-function drawPlants() {
+function desenharPlantas() {
     ctx.save();
 
     ctx.strokeStyle = "green";
@@ -88,7 +88,7 @@ function drawPlants() {
 }
  
 // bolhas
-function drawBubbles() {
+function desenharBolhas() {
     ctx.save();
  
     ctx.fillStyle = "rgba(173, 216, 230, 0.6)";
@@ -110,7 +110,7 @@ function drawBubbles() {
 }
  
 // peixe - translação
-function drawFish() {
+function desenharPeixe() {
     ctx.save();
  
     ctx.translate(x, 200);
@@ -134,7 +134,7 @@ function drawFish() {
 }
  
 // baiacu - escala em ponto fixo
-function drawPufferFish() {
+function desenharBaiacu() {
     ctx.save();
  
     let px = 400;
@@ -161,7 +161,7 @@ function drawPufferFish() {
 }
  
 // "peixe" que virou uma lata de coca - rotação + translação
-function drawRotatingFish() {
+function desenharLataGirando() {
     ctx.save();
  
     let px = 200;
@@ -178,4 +178,4 @@ function drawRotatingFish() {
     angle += 0.05;
 }
  
-animate();
+animar();
