@@ -1,3 +1,6 @@
+const canvas = document.getElementById("canvas");
+const ctx = canvas.getContext("2d");
+
 let mouse = {
     x: 0,
     y: 0
@@ -9,9 +12,7 @@ canvas.addEventListener("mousemove", (e) => {
     mouse.y = e.clientY - rect.top;
 });
 
-const canvas = document.getElementById("canvas");
-const ctx = canvas.getContext("2d");
- 
+
 let x = 0;
 let angle = 0;
 let scale = 1;
