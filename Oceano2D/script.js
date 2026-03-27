@@ -17,6 +17,7 @@ let x = 0;
 let angle = 0;
 let scale = 1;
 let growing = true;
+let xLata = 0;
  
 let bubbles = [];
  
@@ -163,19 +164,22 @@ function desenharBaiacu() {
 // "peixe" que virou uma lata de coca - rotação + translação
 function desenharLataGirando() {
     ctx.save();
- 
-    let px = 200;
+
+    let px = xLata;
     let py = 100;
- 
-    ctx.translate(px, py);
-    ctx.rotate(angle);
- 
+
+    ctx.translate(px, py); 
+    ctx.rotate(angle);    
+
     ctx.fillStyle = "red";
     ctx.fillRect(-20, -10, 40, 20);
- 
+
     ctx.restore();
- 
+
+   
+    xLata += 2;
+    if (xLata > canvas.width + 50) xLata = -50;
+
     angle += 0.05;
 }
- 
 animar();
