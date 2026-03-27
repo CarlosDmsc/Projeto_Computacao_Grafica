@@ -22,6 +22,7 @@ O peixe se movimenta horizontalmente pela tela utilizando translação.
 **Operação utilizada:**
 
 ctx.translate(x, 200);
+
 ![alt text](image.png)
 
 ### Baiacu — Escala com Ponto Fixo (T → Op → T)
